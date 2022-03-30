@@ -1,0 +1,30 @@
+{% extends 'url/base.html' %} 
+
+{% block body %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DGSW.me</title>
+</head>
+<body>
+<div class="container" id="container">
+	<img src="/static/logo.png" id="logo">
+    <div class="container2" id="container2">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.long_url}}
+        </div>
+</div>
+{% if errors %}
+<div class="alert alert-danger mt-4" role="alert">
+  <p>{{errors}}</p>
+</div>
+{% endif %}
+{% if new_url %}
+<script type="text/javascript">document.getElementById("urls").value = "{{new_url}}";</script>
+{% endif %}
+</body>
+</html>
+{% endblock body %}
